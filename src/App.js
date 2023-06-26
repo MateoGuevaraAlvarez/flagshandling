@@ -1,9 +1,10 @@
 import './App.css';
 import { useState,useEffect } from 'react';
-import Obtenerbandera from './components/obtenerbandera';
+import ObtenerBandera from './components/ObtenerBandera';
 function App() {
   const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState([]);
+  const [puntos, setPuntos] = useState (0)
   useEffect(() => {
     fetch('https://countriesnow.space/api/v0.1/countries/flag/images')
     .then(res => res.json())
@@ -16,9 +17,9 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <h1>React App</h1>
-      <Obtenerbandera countries={countries} country={country} setCountry={setCountry}/>
+    <div className="App" >
+      <h1>Adivina la bandera</h1>
+      <ObtenerBandera countries={countries} country={country} setCountry={setCountry} puntos = {puntos} setPuntos={setPuntos}/>
     </div>
   );
 }
